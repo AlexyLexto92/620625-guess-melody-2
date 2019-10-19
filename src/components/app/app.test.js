@@ -4,8 +4,8 @@ import {App} from './app';
 
 it(`App correctly renders after relaunch`, () => {
   const tree = renderer.create(<App
-    mistakes={0}
-    minutes={0}
+    count={4}
+    time={7}
     onClick={jest.fn()}
   />)
     .toJSON();
