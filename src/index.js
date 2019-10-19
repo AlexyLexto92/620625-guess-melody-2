@@ -6,10 +6,12 @@ const init = () => {
   const settings = {
     gameTime: 7,
     errorCount: 4,
+    letsStartGame() {},
   };
   ReactDOM.render(<App
     errorCount={settings.errorCount}
     gameTime={settings.gameTime}
+    letsStartGame={settings.letsStartGame}
   />, document.querySelector(`#root`));
 };
 init();
