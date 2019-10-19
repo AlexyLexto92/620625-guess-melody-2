@@ -17,6 +17,6 @@ export const WelcomeScreen = (props) => {
 };
 
 WelcomeScreen.propTypes = {
-  time: PropTypes.number.isRequired,
-  count: PropTypes.number.isRequired
+  time: PropTypes.number,
+  count: PropTypes.number
 };
