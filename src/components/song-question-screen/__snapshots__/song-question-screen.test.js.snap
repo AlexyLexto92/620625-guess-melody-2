@@ -82,6 +82,7 @@ exports[`App correctly renders after relaunch 1`] = `
     </div>
     <form
       className="game__artist"
+      onSubmit={[Function]}
     >
       <div
         className="artist"

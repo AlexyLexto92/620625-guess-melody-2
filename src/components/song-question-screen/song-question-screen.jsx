@@ -35,7 +35,10 @@ export const SongQuestionScreen = ({question, onAnsverHendler, radioHendler}) =>
           </div>
         </div>
 
-        <form className="game__artist" onChange={onAnsverHendler}>
+        <form className="game__artist" onSubmit={(evt) => {
+          evt.preventDefault();
+          onAnsverHendler();
+        }}>
           {answers.map((elem, it) =>
             <div className="artist" key={`answer-${it}`}>
               <input className="artist__input visually-hidden" type="radio" name={`answer-${it}`} value={elem.artist} id={`answer-${it}`} onChange={radioHendler} />

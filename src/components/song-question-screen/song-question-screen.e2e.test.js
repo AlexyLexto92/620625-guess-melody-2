@@ -8,7 +8,7 @@ it(`callback function correct run`, () => {
   const onChange = jest.fn();
   const songquestionscreen = shallow(<SongQuestionScreen
 
-    onAnsverHendler={onChange}
+    radioHendler={onChange}
     question={
       {
         type: `artist`,
@@ -33,7 +33,7 @@ it(`callback function correct run`, () => {
       }
     }
   />);
-  const button = songquestionscreen.find(`form`);
+  const button = songquestionscreen.find(`input`).first();
   button.simulate(`change`, {unswer: `John Snow`
   });
   expect(onChange).toHaveBeenCalledWith({unswer: `John Snow`});
