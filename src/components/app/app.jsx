@@ -34,7 +34,7 @@ export class App extends PureComponent {
         count={count}
         letsStartGame={onAnsverHendler}
       />;
-    } else if (question === 0) {
+    } if (question === 0) {
       const {questions} = props;
       return <GenreQuestionScreen
         question={questions[question]}
@@ -72,7 +72,7 @@ export class App extends PureComponent {
       this.setState((prevState) => {
         prevState.genreUnsvers[target.value] = prevState.genreUnsvers[target.value] + 1;
       });
-    } else if (target.type === `checkbox` && target.checked === false) {
+    } if (target.type === `checkbox` && !target.checked) {
       this.setState((prevState) => {
         prevState.genreUnsvers[target.value] = prevState.genreUnsvers[target.value] - 1;
       });

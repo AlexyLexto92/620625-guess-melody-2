@@ -35,7 +35,7 @@ export const SongQuestionScreen = ({question, onAnsverHendler, radioHendler}) =>
           </div>
         </div>
 
-        <form className="game__artist" onSubmit={(evt) => {
+        <form className="game__artist" onChange={(evt) => {
           evt.preventDefault();
           onAnsverHendler();
         }}>
