@@ -34,25 +34,27 @@ export class App extends PureComponent {
         count={count}
         letsStartGame={onAnsverHendler}
       />;
-    } if (question === 0) {
+    }
+    if (question === 0) {
       const {questions} = props;
       return <GenreQuestionScreen
         question={questions[question]}
         onAnsverHendler={onAnsverHendler}
         checkboxHandler={checkboxHandler}
       />;
-    } else {
-      const {questions} = props;
-      return <SongQuestionScreen
-        question={questions[question]}
-        radioHendler={radioHendler}
-        onAnsverHendler={onAnsverHendler}
-      />;
     }
+    const {questions} = props;
+    return <SongQuestionScreen
+      question={questions[question]}
+      radioHendler={radioHendler}
+      onAnsverHendler={onAnsverHendler}
+    />;
+
   }
 
   render() {
     const {question} = this.state;
+    console.log(this.state);
     return App.getScreen(question, this.props, this.onAnsverHendler, this.checkboxHandler, this.radioHendler);
   }
   onAnsverHendler() {
@@ -67,29 +69,26 @@ export class App extends PureComponent {
   }
 
   checkboxHandler(evt) {
+    debugger
     const target = evt.target;
-    if (target.type === `checkbox` && target.checked) {
-      this.setState((prevState) => {
-        prevState.genreUnsvers[target.value] = prevState.genreUnsvers[target.value] + 1;
-      });
-    } if (target.type === `checkbox` && !target.checked) {
-      this.setState((prevState) => {
-        prevState.genreUnsvers[target.value] = prevState.genreUnsvers[target.value] - 1;
-      });
-
+    if (target.type !== `checkbox`) {
+      return
     }
+    this.setState((prevState) => {
+      const value = target.checked ? prevState.genreUnsvers[target.value] + 1 : prevState.genreUnsvers[target.value] - 1;
+      return {
+        [prevState.genreUnsvers[target.value]]: value
+      }
+    })
   }
 
   radioHendler(evt) {
+    debugger
     const target = evt.target;
     const value = target.type === `radio` && target.checked ? target.value : ``;
-    this.setState((prevState) => {
-      prevState.songUnvers.unswer = value;
-    });
-  }
-
+    this.setState({songUnvers:{unswer : value}});
 }
-
+}
 App.propTypes = {
   time: PropTypes.number,
   count: PropTypes.number,
