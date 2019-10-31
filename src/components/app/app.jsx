@@ -54,7 +54,6 @@ export class App extends PureComponent {
 
   render() {
     const {question} = this.state;
-    console.log(this.state);
     return App.getScreen(question, this.props, this.onAnsverHendler, this.checkboxHandler, this.radioHendler);
   }
   onAnsverHendler() {
@@ -69,25 +68,22 @@ export class App extends PureComponent {
   }
 
   checkboxHandler(evt) {
-    debugger
     const target = evt.target;
     if (target.type !== `checkbox`) {
-      return
+      return;
     }
 
     this.setState((prevState) => {
-      const value = target.checked ? (prevState.genreUnsvers[target.value] + 1 ): (prevState.genreUnsvers[target.value] - 1);
-
-    return Object.assign({},this.state,{genreUnsvers:{[target.value]: value}});
-    })
+      const value = target.checked ? (prevState.genreUnsvers[target.value] + 1) : (prevState.genreUnsvers[target.value] - 1);
+      return Object.assign({}, this.state, {genreUnsvers: {[target.value]: value}});
+    });
   }
 
   radioHendler(evt) {
-    debugger
     const target = evt.target;
     const value = target.type === `radio` && target.checked ? target.value : ``;
-    this.setState({songUnvers:{unswer : value}});
-}
+    this.setState({songUnvers: {unswer: value}});
+  }
 }
 App.propTypes = {
   time: PropTypes.number,
