@@ -74,11 +74,11 @@ export class App extends PureComponent {
     if (target.type !== `checkbox`) {
       return
     }
+
     this.setState((prevState) => {
-      const value = target.checked ? prevState.genreUnsvers[target.value] + 1 : prevState.genreUnsvers[target.value] - 1;
-      return {
-        [prevState.genreUnsvers[target.value]]: value
-      }
+      const value = target.checked ? (prevState.genreUnsvers[target.value] + 1 ): (prevState.genreUnsvers[target.value] - 1);
+
+    return Object.assign({},this.state,{genreUnsvers:{[target.value]: value}});
     })
   }
 
