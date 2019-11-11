@@ -30,7 +30,16 @@ it(`App correctly renders after relaunch`, () => {
         ],
       }
     }
-  />)
+  />,
+  {
+    createNodeMock(element) {
+      if (element.type === `audio`) {
+        return {};
+      }
+
+      return null;
+    }
+  })
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
