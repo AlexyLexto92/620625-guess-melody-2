@@ -11,7 +11,7 @@ describe(`AudioPlayer controls`, () => {
     .mockImplementation(() => {});
 
   const audioPlayer = mount(<AudioPlayer
-    src={``}
+    src=""
     isPlaying={false}
     onPlayButtonClick={jest.fn()}
   />);

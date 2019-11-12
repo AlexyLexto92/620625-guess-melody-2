@@ -1,9 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {GenreQuestionScreen} from './genre-question-screen.jsx';
+import {createNodeMock} from '../test/tests.js';
 
 it(`App correctly renders after relaunch`, () => {
-  const tree = renderer.create(< GenreQuestionScreen
+  const options = {createNodeMock};
+  const tree = renderer.create(<GenreQuestionScreen
     count={4}
     time={7}
     onClick={jest.fn()}
@@ -31,15 +33,8 @@ it(`App correctly renders after relaunch`, () => {
       }
     }
   />,
-  {
-    createNodeMock(element) {
-      if (element.type === `audio`) {
-        return {};
-      }
-
-      return null;
-    }
-  })
+  options
+  )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

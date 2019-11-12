@@ -1,8 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {SongQuestionScreen} from './song-question-screen';
+import {createNodeMock} from '../test/tests.js';
 
 it(`App correctly renders after relaunch`, () => {
+  const options = {createNodeMock};
   const tree = renderer.create(<SongQuestionScreen
     count={4}
     time={7}
@@ -31,15 +33,8 @@ it(`App correctly renders after relaunch`, () => {
       }
     }
   />,
-  {
-    createNodeMock(element) {
-      if (element.type === `audio`) {
-        return {};
-      }
-
-      return null;
-    }
-  })
+  options
+  )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
