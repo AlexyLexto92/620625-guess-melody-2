@@ -6,7 +6,7 @@ Enzyme.configure({adapter: new Adapter()});
 
 it(`callback function correct run`, () => {
   const onChange = jest.fn();
-  const genrequestionscreen = shallow(<GenreQuestionScreen
+  const genrequestionscreen = shallow(< GenreQuestionScreen
 
     checkboxHandler={onChange}
     question={
@@ -28,17 +28,16 @@ it(`callback function correct run`, () => {
         {
           src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
           genre: `rock`,
-        }],
+        }
+        ],
       }
     }
   />);
-  const button = genrequestionscreen.find(`input`).first();
-  button.simulate(`change`, {
+  const button = genrequestionscreen.find(`input`).first(); button.simulate(`change`, {
     pop: 0,
     jazz: 0,
     rock: 0
-  });
-  expect(onChange).toHaveBeenCalledWith({
+  }); expect(onChange).toHaveBeenCalledWith({
     pop: 0,
     jazz: 0,
     rock: 0
