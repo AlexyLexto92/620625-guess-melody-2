@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {WelcomeScreen} from './../welcome-screen/welcome-screen.jsx';
 import {GenreQuestionScreen} from './../genre-question-screen/genre-question-screen.jsx';
 import {SongQuestionScreen} from './../song-question-screen/song-question-screen.jsx';
+
 
 export class App extends PureComponent {
   constructor(props) {
@@ -24,6 +26,7 @@ export class App extends PureComponent {
     this.onAnsverHendler = this.onAnsverHendler.bind(this);
   }
   static getScreen(question, props, onAnsverHendler, checkboxHandler, radioHendler) {
+ 
     if (question === -1) {
       const {
         time,
@@ -53,6 +56,8 @@ export class App extends PureComponent {
   }
 
   render() {
+    const {step} = this.props;
+    console.log(step);
     const {question} = this.state;
     return App.getScreen(question, this.props, this.onAnsverHendler, this.checkboxHandler, this.radioHendler);
   }
@@ -110,3 +115,11 @@ App.propTypes = {
         )
       }))
 };
+
+const mapStateToProps = (state) => { return {
+  step: state.step,
+}};
+
+
+
+export default connect(mapStateToProps)(App);

@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {AudioPlayer} from '../audioPlayer/audioPlayer.jsx';
+import  { QuestionError } from '../questionError/questionError.jsx';
 
 export class GenreQuestionScreen extends PureComponent {
   constructor(props) {
@@ -27,9 +28,9 @@ export class GenreQuestionScreen extends PureComponent {
         </div>
 
         <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
+        <QuestionError
+  
+        />
         </div>
       </header>
 
